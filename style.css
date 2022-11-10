@@ -1,0 +1,81 @@
+body {
+    background-color: var(--bg-main-color);
+}
+
+gameDiv {
+    background-image: url("./static/bg.png");
+    background-color: yellow;
+    display: flex;
+    width: var(--bg-image-width);
+    height: var(--bg-image-height);
+    margin-top: 0px;
+    margin-left: 0px;
+    position: absolute;
+}
+
+innerGameDiv {
+    background-color: magenta;
+    display: flex;
+    width: var(--bg-window-width);
+    height: var(--bg-window-height-jalousie);
+    margin-top: 0px;
+    margin-left: var(--bg-margin-window);
+    position: absolute;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+statusBoard {
+    background-color: brown;
+    color:palegoldenrod;
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px papayawhip;
+    width: 100px;
+    height: 50px;
+    margin-top: 60px;
+    margin-left: 150px;
+    position: absolute;
+}
+
+card-front, card-back {
+    position: absolute;
+    width: var(--card-width);
+    height: var(--card-height);
+    display: flex;
+    cursor: pointer;
+    transition:cubic-bezier(0.86, 0, 0.07, 1);
+    backface-visibility: hidden;
+}
+
+innerGameDiv img {
+    margin: 2px;
+    transform-style: preserve-3d;
+    transition:cubic-bezier(0.86, 0, 0.07, 1);
+    width: var(--card-width);
+    height: var(--card-height);
+    position: relative;
+    display: flex;   
+    backface-visibility: hidden;
+
+}
+
+
+
+innerGameDiv img.flip {
+
+    /*transform: rotateY(180deg);*/
+    transition:cubic-bezier(0.86, 0, 0.07, 1);
+    
+}
+
+:root {
+--bg-main-color: #170c06;
+--bg-image-width: 880px;
+--bg-image-height: 710px;
+--bg-window-width2: 578px;
+--bg-window-height-jalousie: 522px;
+--bg-margin-window2: 155px;
+--bg-margin-window: calc(0.176 * var(--bg-image-width));
+--bg-window-width: calc(0.657 * var(--bg-image-width));
+--card-width: 112px;
+--card-height: 132px;
+}
