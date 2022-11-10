@@ -11,6 +11,11 @@ const cardArray = [
     {name: "5", img: "./static/5.png",},
     {name: "6", img: "./static/6.png",},
     {name: "6", img: "./static/6.png",},
+//    {name: "7", img: "./static/7.png",},
+  //  {name: "7", img: "./static/7.png",},
+   // {name: "8", img: "./static/8.png",},
+   // {name: "8", img: "./static/8.png",},
+
 ];
 
 
@@ -23,20 +28,18 @@ function shuffle(array) {
     return array;
 }
 
-let shuffledArray = [...cardArray];
-shuffledArray = shuffle(shuffledArray);
-console.log(cardArray);
-console.log(shuffledArray);
+let clonedArray = shuffle([...cardArray]);
+let shuffledArray = [...clonedArray];
+
 
 function createBoard(grid, array) {
-array.forEach((arr, index) => {
-let img = document.createElement("img");
-img.setAttribute("src", "./static/que.png");
-img.setAttribute("data-id", index);
-grid.appendChild(img);
-}
-)
-}
+    array.forEach((arr, index) => {
+    let img = document.createElement("img");
+    img.setAttribute("src", "./static/que.png");
+    img.setAttribute("data-id", index);
+    grid.appendChild(img);
+    }
+)}
 
 const gameDiv = document.createElement("gameDiv");
 const gameContent = document.createTextNode("Hi!!!!!!!!!!!!!1");
@@ -45,10 +48,10 @@ createBoard(innerGameDiv, shuffledArray);
 const statusBoard = document.createElement("statusBoard");
 let gameTime = 0;
 let gameClicks = 0;
-const timeBoard = document.createTextNode("Time: " + gameTime);
-//timeBoard.appendChild(gameTime);
-const clickBoard = document.createTextNode("Clicks: " + gameClicks);
-//clickBoard.appendChild(gameClicks);
+let timeBoard = document.createElement("timeBoard");
+timeBoard.innerHTML = "Time: " + gameTime;
+let clickBoard = document.createElement("clickBoard");
+clickBoard.innerHTML = "Clicks: " + gameClicks;
 statusBoard.appendChild(timeBoard);
 statusBoard.appendChild(clickBoard);
 
@@ -61,18 +64,51 @@ document.getElementById("main").appendChild(gameDiv);
 let images;
 images = document.querySelectorAll("img");
 Array.from(images).forEach(image => image.addEventListener("click", flipCard));
+console.log(images);
 
 let selectedCards = [];
 
 function flipCard() {
+    if (selectedCards.length === 2) {
+        setTimeout()
+    }
     let selectedCardId = this.dataset.id;
-    console.log(selectedCardId);
-    //selectedCards.push(shuffledArray)
+    selectedCards.push(selectedCardId);
     this.classList.toggle("flip");
-    this.setAttribute("src", cardArray[selectedCardId].img);
-    console.log(cardArray);
-    console.log(shuffledArray);
-    console.log(cardArray[selectedCardId].img);
+    this.setAttribute("src", shuffledArray[selectedCardId].img);
+    gameClicks +=1;
+    clickBoard.innerHTML = "Clicks: " + gameClicks;
+    
+    console.log(gameClicks);
+    if (selectedCards.length === 2) {
+        setTimeout(checkIfMatching, 500);
+    }
+}
+
+function checkIfMatching() {
+    let firstCard = selectedCards[0];
+    let secondCard = selectedCards[1];
+    let firstName = shuffledArray[firstCard].name;
+    let secondName = shuffledArray[secondCard].name;
+    if (firstCard !== secondCard && firstName === secondName) {
+        alert("Match!");
+        console.log(firstCard);
+        console.log(secondCard);
+        console.log(images[firstCard]);
+        console.log(images[secondCard]);
+        console.log(images);
+        //images[firstCard].style.display = "none";
+        //images[secondCard].style.display = "none";
+        images[firstCard].classList.add("matched");
+        images[secondCard].classList.add("matched");
+    }
+    else {
+        images[firstCard].classList.remove("flip");
+        images[secondCard].classList.remove("flip");
+        images[firstCard].setAttribute("src", "./static/que.png");
+        images[secondCard].setAttribute("src", "./static/que.png");
+    }
+    selectedCards = [];
 }
 
 initGame();
