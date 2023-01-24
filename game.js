@@ -55,7 +55,7 @@ function shuffle(array) {
     return array;
 }
 
-
+// use loader / preloading imgs
 function createBoard(grid, array) {
     array.forEach((arr, index) => {
         let img = document.createElement("img");
@@ -79,7 +79,7 @@ function flipCard() {
     clickBoard.appendChild(playAgainButton);
 
     }
-    if (selectedCards.length === 2) {
+    if (selectedCards.length == 2) {
         // freeze event listener to prevent more than 2 flips
         Array.from(images).forEach(image => image.removeEventListener("click", flipCard));
         setTimeout(checkIfMatching, 500);
@@ -91,7 +91,7 @@ function checkIfMatching() {
     let secondCard = selectedCards[1];
     let firstName = shuffledArray[firstCard].name;
     let secondName = shuffledArray[secondCard].name;
-    if (firstCard !== secondCard && firstName === secondName) {
+    if (firstCard !== secondCard && firstName == secondName) {
         matchedCards(images[firstCard], images[secondCard])
         //images[firstCard].classList.add("matched");
         //images[secondCard].classList.add("matched");
@@ -99,10 +99,11 @@ function checkIfMatching() {
     else {
         flipBackCards();
     }
-    selectedCards = [];
+    selectedCards = []; // other ways to clear; preferably array should have 2 elems at all times
     Array.from(images).forEach(image => image.addEventListener("click", flipCard));
 }
 
+// pick only flipped
 function flipBackCards() {
     images.forEach((image) => {
         image.classList.remove("flip");
@@ -114,7 +115,6 @@ function matchedCards(first, second) {
     first.classList.add("blinking");
     second.classList.add("blinking");
     setTimeout(function() {
-        console.log("hhhhhh");
         first.classList.remove("blinking");
         second.classList.remove("blinking");    
         first.classList.add("matched");
@@ -123,7 +123,7 @@ function matchedCards(first, second) {
 
 }
 
-function countTime() {
+function countTime() { //request animation time/frame
     currentTime = Math.floor(Date.now() / 1000);
     elapsedTime = currentTime - startTime;
     let minutesElapsed = Math.floor(elapsedTime / 60);
@@ -135,6 +135,7 @@ function countTime() {
     timeBoard.innerHTML = minutesElapsed + ":" + secondsElapsed;
     let timeTime = setTimeout(countTime, 100);
 }
+
 
 function twoDigitsTime(time) {
     if (time < 10) {

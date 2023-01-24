@@ -3,8 +3,10 @@
 <head>
     <title>The Coffee Game</title>
     <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- http://proger.i-forge.net/The_smallest_transparent_pixel/ -->
-    <link rel="icon" href="data:image/gif;base64,R0lGODlhAQABAAAAACwAAAAAAQABAAA=">
+    <!--<link rel="icon" href="data:image/gif;base64,R0lGODlhAQABAAAAACwAAAAAAQABAAA="> -->
+    <link rel="icon" href="./static/favicon.png">
     <link rel="stylesheet" href="./style.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@600&display=swap');
@@ -14,7 +16,7 @@
 </head>
 <body>
     <div id="main"></div>
-<script src="./game.js"></script>
+<script src="./game.js" defer="true"></script> <!-- to make js launch when needed --> 
 
 </body>
 </html>
