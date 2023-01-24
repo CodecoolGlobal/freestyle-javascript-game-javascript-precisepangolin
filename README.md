@@ -22,6 +22,9 @@ Open index.html in a browser that supports JavaScript version 1.5.
 
 ![coffeegame](https://user-images.githubusercontent.com/61357898/213879195-9f9de7c9-d3ac-4c02-a15c-8ea5f007d65d.png)
 ![coffeegame2](https://user-images.githubusercontent.com/61357898/213879199-13e5ab17-654d-49d3-8614-c11dfc14090b.png)
+* Animated gif (shown randomization & gameplay):
+
+![coffeegame](https://user-images.githubusercontent.com/61357898/214293110-e53ffbcd-333a-4adf-960a-60d9f97de8b5.gif)
 
 ## Credits
 Credit to authors of the original pictures.
