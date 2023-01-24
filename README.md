@@ -9,7 +9,7 @@
 ## General info
 A coffee-themed memory card game with the contents generated in JavaScript using DOM manipulation.
 
-The cards are shuffled each playtime and a subtle animation occurs on click. As the cards are matched they disappear to reveal a randomized background in the game window. 
+The cards are shuffled each playtime and a subtle animation occurs on click. As the cards are matched they disappear to reveal a randomized background in the game window. Supports view for most mobile formats.
 
 ## Technologies
 * JavaScript version: 1.5
